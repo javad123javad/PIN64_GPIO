@@ -29,6 +29,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TestArm/DbgLib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TestArm/Generic}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TestArm/I2CLib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TestArm/GpioLib}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.798550123" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>

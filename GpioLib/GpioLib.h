@@ -48,7 +48,9 @@ struct PIN_CFG
 /* End of PIN Register definition */
 void * gpio_init();
 
-int gpio_set_pin(const uint32_t i_port_name, const uint8_t i_pin_name
+int gpio_conf_pin(void *p_mem, const uint32_t i_port_name, const uint8_t i_pin_name
 		, const uint8_t i_pin_mode);
+int gpio_read_pin(void *p_mem, const uint32_t i_port_name, const uint8_t i_pin_name);
+int gpio_write_pin(void *p_mem, const uint32_t i_port_name, const uint8_t i_pin_name, const unsigned char i_pin_val);
 
 #endif /* GPIOLIB_H_ */

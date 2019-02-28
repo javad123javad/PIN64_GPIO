@@ -7,6 +7,7 @@
 
 #include "I2CLib.h"
 #include "DbgLib.h"
+#include "GpioLib.h"
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
 #include <stdio.h>
@@ -71,17 +72,19 @@ int test_mmap()
 
    int fd;
    void *p_mem;
-   volatile uint32_t *gpio;    /* The registers in gpio-space are 32-bits wide. */
    unsigned int offset;        /* offsets from 0x800, so need not be that big */
+   volatile uint32_t *gpio;    /* The registers in gpio-space are 32-bits wide. */
+
    unsigned int page_size;     /* Page-size from system, it reports 0x1000 here. */
    int j;
+#if 0
 
    page_size = sysconf(_SC_PAGESIZE);
 
    fd = open("/dev/mem", O_RDWR | O_SYNC);
    if(fd == -1)
    {
-       /* Very likely if you forget to run this as root ... */
+       ///* Very likely if you forget to run this as root ...
        perror("/dev/mem");
        return 0;
    }
@@ -119,6 +122,12 @@ int test_mmap()
        *(gpio) |= (0x10);   /* Set bit 4 for PC4 to 1 */
        usleep(50000);
    }
+#endif
+  p_mem = gpio_init();
+
+   gpio_conf_pin(p_mem, PORTB, PB1_SELECT, PIN_OUT);
+//   gpio_read_pin(p_mem, PORTB, PB0_SELECT);
+   gpio_write_pin(p_mem, PORTB, PB1_SELECT, 0);
 
    munmap(p_mem, page_size*2);
 
